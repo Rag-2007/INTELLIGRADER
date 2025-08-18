@@ -112,7 +112,7 @@ elif  not st.session_state['isregister']:
         "rollno":None,
         "password1":None,
         "password2":None,
-    } 
+    }
         with st.form(key='reg-stu-frm') :
             st.subheader('NEW-STUDENT REGISTRATION 💻')
             f['rollno'] = st.text_input('Enter your Roll Number')
