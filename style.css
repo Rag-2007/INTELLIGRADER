@@ -101,3 +101,9 @@ div[data-testid="stBottom"] > div {
 div[data-testid="stText"]>div{
     color: white!important;
 }
+div[data-testid="stTextInputRootElement"] >div{
+    background-color: rgb(230, 230, 230);
+}
+div[data-testid="stTextInput"] >div{
+    background-color: rgb(230, 230, 230);
+}
