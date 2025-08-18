@@ -8,7 +8,6 @@ from openai.error import ServiceUnavailableError,RateLimitError
 from googleapiclient.discovery import build
 import studentdb as sdb
 import relation
-import os 
 
 with open('style.css') as f :
     st.markdown(f'''<style>{f.read()}</style>''',unsafe_allow_html=True)
@@ -113,7 +112,7 @@ elif  not st.session_state['isregister']:
         "rollno":None,
         "password1":None,
         "password2":None,
-    }
+    } 
         with st.form(key='reg-stu-frm') :
             st.subheader('NEW-STUDENT REGISTRATION 💻')
             f['rollno'] = st.text_input('Enter your Roll Number')
@@ -186,8 +185,8 @@ else:
             tab1,tab2= st.tabs(['Summariser','Results'])
             with tab1:
 
-                openai.api_key = os.getenv('openai_apikey1')
-                openai.api_base = os.getenv('openai_apibase')
+                openai.api_key = st.secrets['openai_apikey1']
+                openai.api_base = st.secrets['openai_apibase']
 
                 def extract_all_text_pdf(file):
                     pdf_bytes = file.read()
@@ -340,9 +339,9 @@ else:
                                     st.session_state['see_yt'] = True 
 
                             if st.session_state['see_yt'] :        
-                                    API_KEY = os.getenv('youtube_apikey')
-                                    YOUTUBE_API_SERVICE_NAME = os.getenv('YOUTUBE_API_SERVICE_NAME')
-                                    YOUTUBE_API_VERSION = os.getenv('YOUTUBE_API_VERSION')
+                                    API_KEY = st.secrets['youtube_apikey']
+                                    YOUTUBE_API_SERVICE_NAME = st.secrets['YOUTUBE_API_SERVICE_NAME']
+                                    YOUTUBE_API_VERSION = st.secrets['YOUTUBE_API_VERSION']
                                     def youtube_search(query, max_results=1):
                                         youtube = build(YOUTUBE_API_SERVICE_NAME, YOUTUBE_API_VERSION,
                                                         developerKey=API_KEY)
@@ -361,8 +360,8 @@ else:
                                                 video_url = f"https://www.youtube.com/watch?v={video_id}"
                                                 results.append((item["snippet"]["title"], video_url))
                                         return results
-                                    openai.api_key = os.getenv('openai_apikey1')
-                                    openai.api_base = os.getenv('openai_apibase')
+                                    openai.api_key = st.secrets['openai_apikey1']
+                                    openai.api_base = st.secrets['openai_apibase']
                                     instructions = """
                                         suggest a youtube search for each in incorrect question 
                                         which should me more realtistic and not fictional ,
@@ -409,8 +408,8 @@ else:
                         
         elif not st.session_state['chatbot']:
 
-            openai.api_key = os.getenv('openai_apikey1')
-            openai.api_base = os.getenv('openai_apibase')
+            openai.api_key = st.secrets['openai_apikey1']
+            openai.api_base = st.secrets['openai_apibase']
             instructions = """
             You are an AI assistant with two modes:
             1. *Factual mode* – When the question is about the provided PDF, answer using its content first.
@@ -429,7 +428,7 @@ else:
                 st.session_state['messages'] = [{'role':'system','content':system_prompt}]
 
 
-            st.header('CHAT WITH THE CONTENT 👨🏻‍💻')
+            st.subheader('CHAT WITH THE CONTENT 👨🏻‍💻')
 
             with st.sidebar:
                 st.sidebar.title("Model Parameters")
@@ -543,8 +542,8 @@ else:
                                             6. If the student did not answer a question, still include a suggestion for that question (e.g., "Q5: No answer provided, revise topic XYZ").Always follow this structure exactly."""
                         messaged = [{'role':'system','content':system_prompt},
                                     {'role':'user','content':f"Student Script:\n{paper}\n\nAnswer Sheet:\n{answer}"}]
-                        openai.api_key = os.getenv('openai_apikey2')
-                        openai.api_base = os.getenv('openai_apibase')
+                        openai.api_key = st.secrets['openai_apikey2']
+                        openai.api_base = st.secrets['openai_apibase']
                         response = openai.ChatCompletion.create(
                         model="llama3-70b-8192",  
                         messages = messaged
@@ -587,8 +586,8 @@ else:
                                             6. If the student did not answer a question, still include a suggestion for that question (e.g., "Q5: No answer provided, revise topic XYZ").Always follow this structure exactly."""
                         messaged = [{'role':'system','content':system_prompt},
                                     {'role':'user','content':f"Student Script:\n\n{paper}\n"}]
-                        openai.api_key = os.getenv('openai_apikey1')
-                        openai.api_base = os.getenv('openai_apibase')
+                        openai.api_key = st.secrets['openai_apikey2']
+                        openai.api_base = st.secrets['openai_apibase']
                         response = openai.ChatCompletion.create(
                         model="llama3-70b-8192",  
                         messages = messaged
