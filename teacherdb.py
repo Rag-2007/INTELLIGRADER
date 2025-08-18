@@ -1,13 +1,14 @@
-import psycopg2
-import streamlit as st
+import  psycopg2
+import os
 def postgre_connect():
     return psycopg2.connect(
-        host= st.secrets['host'],
-        port=st.secrets['port'],
-        database=st.secrets['database'],
-        user=st.secrets['user'],
-        password=st.secrets['password']
+        host= os.getenv('host'),
+        port=os.getenv('port'),
+        database=os.getenv('database'),
+        user=os.getenv('user'),
+        password=os.getenv('password')
     )
+    
 def create():
     conn = postgre_connect()
     cur = conn.cursor()
