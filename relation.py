@@ -1,9 +1,8 @@
 import  psycopg2
 import streamlit as st
-
 def postgre_connect():
     return psycopg2.connect(
-    st.secrets["database_url"]
+        st.secrets['databaseurl'] 
     )
     
 def create_relation():
