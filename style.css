@@ -72,16 +72,20 @@ h1, .title {
 
 #text_input_1{
     background-color: rgb(230, 230, 230) ;
+    color: black;
 }
 #text_input_2{
     background-color: rgb(230, 230, 230) ;
+    color: black;
 }
 
 #text_input_3{
     background-color: rgb(230, 230, 230) ;
+    color: black;
 }
 #text_input_4{
     background-color: rgb(230, 230, 230) ;
+    color: black;
 }
 
 div[data-baseweb="tab-highlight"] {
@@ -106,4 +110,5 @@ div[data-testid="stTextInputRootElement"] >div{
 }
 div[data-testid="stTextInput"] >div{
     background-color: rgb(230, 230, 230);
+    color: black;
 }
