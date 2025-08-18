@@ -1,14 +1,14 @@
 import  psycopg2
-import os
+import streamlit as st
+
 def postgre_connect():
     return psycopg2.connect(
-        host= os.getenv('host'),
-        port=os.getenv('port'),
-        database=os.getenv('database'),
-        user=os.getenv('user'),
-        password=os.getenv('password')
+        host= st.secrets['host'],
+        port=st.secrets['port'],
+        database=st.secrets['database'],
+        user=st.secrets['user'],
+        password=st.secrets['password']
     )
-    
 
 def create():
     conn = postgre_connect()
@@ -74,3 +74,5 @@ def search_roll(rollno):
     result = cur.fetchone()
     conn.close()
     return result
+
+
