@@ -3,11 +3,7 @@ import streamlit as st
 
 def postgre_connect():
     return psycopg2.connect(
-        host= st.secrets['host'],
-        port=st.secrets['port'],
-        database=st.secrets['database'],
-        user=st.secrets['user'],
-        password=st.secrets['password']
+    st.secrets["database_url"]
     )
 
 def create():
