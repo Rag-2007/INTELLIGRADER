@@ -70,7 +70,11 @@ h1, .title {
     text-align: center;
 }
 
-#text_input_1{
+#text_input__5{
+    background-color: rgb(230, 230, 230) ;
+    color: black;
+}
+#text_input_6,#text_input_7,#text_input_1{
     background-color: rgb(230, 230, 230) ;
     color: black;
 }
