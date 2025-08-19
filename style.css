@@ -74,7 +74,7 @@ h1, .title {
     background-color: rgb(230, 230, 230) ;
     color: black;
 }
-#text_input_6,#text_input_7,#text_input_1{
+#text_input_6,#text_input_7,#text_input_1,#text_input_10,#text_input_9,#text_input_8{
     background-color: rgb(230, 230, 230) ;
     color: black;
 }
@@ -97,7 +97,7 @@ div[data-baseweb="tab-highlight"] {
     border-radius: 6px !important;
     height: 2px !important;   /* tab indicator thickness */
 }
-
+input
 div[data-testid="stSidebarContent"]{
     background: linear-gradient(135deg, rgb(201, 168, 168), rgb(51, 3, 100), rgb(46, 45, 45)) !important;
 }
